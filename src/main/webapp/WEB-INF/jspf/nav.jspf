@@ -1,0 +1,102 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<%--
+  Created by IntelliJ IDEA.
+  User: shidawei
+  Date: 15/11/1
+  Time: 下午5:33
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page pageEncoding="UTF-8" %>
+<!-- Start of Header -->
+<!--==== DEMO COLOR PANEL =====-->
+<div class="demo_panel_box">
+  <div class="color_panel_box">
+    <div class="spiner_button slide_in_out"><i class="fa fa-cog fa-spin"></i></div>
+    <span class="red_color"></span>
+    <span class="blue_color"></span>
+    <span class="yellow_color"></span>
+    <span class="purple_color"></span>
+    <span class="pink_color"></span>
+    <span class="green_color"></span>
+  </div>
+</div>
+<!--==== DEMO COLOR PANEL ===-->
+
+
+<!--===== Preloader ====-->
+<div class="preloader">
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+</div>
+
+
+<!--=====****************** INTRO SECTION ****************************=====-->
+<div id="home" class="intro-section">
+
+  <!--===== HEADER AREA =====-->
+  <header class="navbar custom-navbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="logo">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <a href="#home">${message}</a> <!--== logo ==-->
+          </div>
+        </div>
+
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <nav class="main-menu">
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav"> <!--== manin menu ==-->
+                <li class="active smooth-scroll"><a class="theme-color" href="#home">主页</a></li>
+                <li class="smooth-scroll"><a class="theme-color" href="${context}/#xiaohe">小禾服务</a></li>
+                <li class="smooth-scroll"><a class="theme-color" href="${context}/socketLog#log">日志平台</a></li>
+                <li class="smooth-scroll"><a class="theme-color" href="#guanyu">关于</a></li>
+                <li class="smooth-scroll"><a class="theme-color" href="#contact">联系</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+  <!--===== END HEADER AREA ======-->
+
+  <!--======= WELCOME AREA =======-->
+  <div class="welcome-area">
+    <div id="particles-js"></div>
+    <div class="welcome-table">
+      <div class="welcome-cell">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="welcome-text text-center">
+                <h4>${message}</h4>
+                <h1>よろしくお願いします <span class="theme-color">愛校の便利なシール</span></h1>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-btn banner-icon theme-color"><i class="fa fa-angle-double-down"></i></a>
+  </div>
+  <!--===== END WELCOME AREA =====-->
+
+</div>
+<!--=====***************** END INTRO SECTION ***********************=====-->

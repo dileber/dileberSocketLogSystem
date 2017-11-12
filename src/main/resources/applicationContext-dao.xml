@@ -1,0 +1,167 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+	<!--<context:property-placeholder location="classpath:mail.properties" order="1" ignore-unresolvable="true"/>-->
+
+	<!--<bean id="constants" class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+		<!--<property name="singleton" value="true"/>-->
+		<!--<property name="ignoreResourceNotFound" value="true"/>-->
+		<!--<property name="locations">-->
+			<!--<list>-->
+				<!--<value>classpath:mail.properties</value>-->
+			<!--</list>-->
+		<!--</property>-->
+	<!--</bean>-->
+
+	<bean id="appConstant" class="com.mianbaopailib.AppConstant">
+		<property name="info" value="true"/>
+		<property name="name" value="baonahaoweb"/>
+	</bean>
+	
+	<bean id="myThreadPool" class="com.mianbaopailib.system.MyThreadPool">
+		<constructor-arg name="size" value="20"/>
+	</bean>
+
+
+	<!-- 加载配置文件 -->
+	<context:property-placeholder location="
+       classpath:app.properties,
+       classpath:db.properties,
+       classpath:redis.properties,
+		classpath:mail.properties" />
+
+	<!--限制最大1024*5120即5M-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		  p:defaultEncoding="UTF-8"
+		  p:maxUploadSize="5242880"
+			/>
+
+	<!--数据库和redis配置注释 2017-11-12-->
+
+	<!--&lt;!&ndash; 配置数据源 &ndash;&gt;-->
+	<!--<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+		<!--&lt;!&ndash; 基本属性 url、user、password &ndash;&gt;-->
+		<!--<property name="url" value="${jdbc.url}" />-->
+		<!--<property name="username" value="${jdbc.username}" />-->
+		<!--<property name="password" value="${jdbc.password}" />-->
+
+		<!--&lt;!&ndash; 初始化连接大小 &ndash;&gt;-->
+		<!--<property name="initialSize" value="${jdbc.initialSize}" />-->
+		<!--&lt;!&ndash; 连接池最大使用连接数量 &ndash;&gt;-->
+		<!--<property name="maxActive" value="${jdbc.maxActive}" />-->
+		<!--&lt;!&ndash; 连接池最小空闲 &ndash;&gt;-->
+		<!--<property name="minIdle" value="${jdbc.minIdle}" />-->
+
+
+		<!--&lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;-->
+		<!--<property name="maxWait" value="${jdbc.maxWait}" />-->
+
+		<!--&lt;!&ndash; <property name="poolPreparedStatements" value="true" /> <property name="maxPoolPreparedStatementPerConnectionSize" value="33" /> &ndash;&gt;-->
+
+		<!--<property name="validationQuery" value="${jdbc.validationQuery}" />-->
+		<!--<property name="testOnBorrow" value="false" />-->
+		<!--<property name="testOnReturn" value="false" />-->
+		<!--<property name="testWhileIdle" value="true" />-->
+
+		<!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+		<!--<property name="timeBetweenEvictionRunsMillis" value="60000" />-->
+		<!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+		<!--<property name="minEvictableIdleTimeMillis" value="300000" />-->
+
+		<!--&lt;!&ndash; 会帮长时间运行的数据库链接干掉,不建议生产环境用 &ndash;&gt;-->
+
+		<!--&lt;!&ndash;&lt;!&ndash; 打开removeAbandoned功能 #是否自动回收超时连接 &ndash;&gt;&ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="removeAbandoned" value="true" />&ndash;&gt;-->
+		<!--&lt;!&ndash;&lt;!&ndash; 1800秒，也就是30分钟 #超时时间(以秒数为单位) &ndash;&gt;&ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="removeAbandonedTimeout" value="1800" />&ndash;&gt;-->
+		<!--&lt;!&ndash;&lt;!&ndash; 关闭abanded连接时输出错误日志 &ndash;&gt;&ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="logAbandoned" value="true" />&ndash;&gt;-->
+
+		<!--&lt;!&ndash;结束&ndash;&gt;-->
+
+		<!--&lt;!&ndash; 监控数据库 &ndash;&gt;-->
+		<!--&lt;!&ndash; <property name="filters" value="stat" /> &ndash;&gt;-->
+		<!--&lt;!&ndash; 开启Druid的监控统计功能 &ndash;&gt;-->
+		<!--<property name="filters" value="mergeStat" />-->
+	<!--</bean>-->
+
+
+	<!--&lt;!&ndash; SqlsessionFactory &ndash;&gt;-->
+	<!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+		<!--&lt;!&ndash; 数据源 &ndash;&gt;-->
+		<!--<property name="dataSource" ref="dataSource"/>-->
+		<!--&lt;!&ndash; mybatis配置文件 &ndash;&gt;-->
+		<!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
+	<!--</bean>-->
+
+
+	<!--&lt;!&ndash;-->
+       <!--MapperScannerConfigurer：mapper的扫描器，将包下边的mapper接口自动创建代理对象，-->
+       <!--自动创建到spring容器中，bean的id是mapper的类名（首字母小写）-->
+        <!--&ndash;&gt;-->
+	<!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+		<!--&lt;!&ndash; 配置扫描包的路径-->
+          <!--如果要扫描多个包，中间使用半角逗号分隔-->
+          <!--要求mapper.xml和mapper.java同名且在同一个目录-->
+           <!--&ndash;&gt;-->
+		<!--<property name="basePackage" value="com.drcosu.mianbaopai.mapper"/>-->
+		<!--&lt;!&ndash; 使用sqlSessionFactoryBeanName &ndash;&gt;-->
+		<!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+	<!--</bean>-->
+
+
+	<!--<bean id="redisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"-->
+		  <!--p:maxIdle="${redis.maxIdle}"-->
+		  <!--p:maxWaitMillis="${redis.maxWaitMillis}"-->
+		  <!--p:testOnBorrow="true"-->
+		  <!--p:maxTotal="${redis.maxTotal}"-->
+			<!--/>-->
+
+	<!--<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"-->
+		  <!--p:hostName="${redis.host}"-->
+		  <!--p:port="${redis.port}"-->
+		  <!--p:usePool="true"-->
+		  <!--p:timeout="${redis.timeout}"-->
+		  <!--p:password="${redis.pass}"-->
+		  <!--p:poolConfig-ref="redisPoolConfig"-->
+			<!--/>-->
+	<!--&lt;!&ndash;普通泛型redisTemplate&ndash;&gt;-->
+	<!--<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"-->
+		  <!--p:connectionFactory-ref="jedisConnectionFactory"-->
+			<!--/>-->
+
+
+	<!--&lt;!&ndash;<bean id="mailSender"&ndash;&gt;-->
+   		<!--&lt;!&ndash;class="org.springframework.mail.javamail.JavaMailSenderImpl">&ndash;&gt;-->
+         <!--&lt;!&ndash;<property name="host">&ndash;&gt;-->
+             <!--&lt;!&ndash;<value>${mail.host}</value>&ndash;&gt;-->
+         <!--&lt;!&ndash;</property>&ndash;&gt;-->
+         <!--&lt;!&ndash;<property name="javaMailProperties">&ndash;&gt;-->
+             <!--&lt;!&ndash;<props>&ndash;&gt;-->
+                 <!--&lt;!&ndash;<prop key="mail.smtp.auth">${mail.auth}</prop>&ndash;&gt;-->
+                 <!--&lt;!&ndash;<prop key="mail.smtp.timeout">${mail.timeout}</prop>&ndash;&gt;-->
+             <!--&lt;!&ndash;</props>&ndash;&gt;-->
+         <!--&lt;!&ndash;</property>&ndash;&gt;-->
+         <!--&lt;!&ndash;<property name="username">&ndash;&gt;-->
+             <!--&lt;!&ndash;<value>${mail.username}</value>&ndash;&gt;-->
+         <!--&lt;!&ndash;</property>&ndash;&gt;-->
+         <!--&lt;!&ndash;<property name="password">&ndash;&gt;-->
+             <!--&lt;!&ndash;<value>${mail.password}</value>&ndash;&gt;-->
+         <!--&lt;!&ndash;</property>&ndash;&gt;-->
+     <!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+
+</beans>

@@ -1,4 +1,4 @@
-package com.drcosu.mianbaopai;
+package com.drcosu.mianbaopai.controller;
 
 import aixiao.uproduct.*;
 import aixiao.uproduct.uemail.UEmail;
@@ -38,7 +38,7 @@ public class ApkController {
     @Resource
     private ServletContext servletContext;
     @Value("${file.ip}")
-    public  String ip; //ÕâÀï±äÁ¿²»ÄÜ¶¨Òå³Éstatic
+    public  String ip; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½ï¿½static
 
     @Value("${file.down}")
     public  String down;
@@ -58,9 +58,9 @@ public class ApkController {
         UProperties.config = new HashMap<String, String>();
         Properties prop = new Properties();
         try{
-            //¶ÁÈ¡ÊôÐÔÎÄ¼þa.properties
+            //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½a.properties
             InputStreamReader in = new InputStreamReader(inputStream);
-            prop.load(in);     ///¼ÓÔØÊôÐÔÁÐ±í
+            prop.load(in);     ///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
             Iterator<String> it=prop.stringPropertyNames().iterator();
             while(it.hasNext()){
                 String key = it.next();
@@ -101,10 +101,10 @@ public class ApkController {
 
         File file=new File(tempPackage);
         File[] tempList = file.listFiles();
-        System.out.println("¸ÃÄ¿Â¼ÏÂ¶ÔÏó¸öÊý£º" + tempList.length);
+        System.out.println("ï¿½ï¿½Ä¿Â¼ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + tempList.length);
         for (int i = 0; i < tempList.length; i++) {
             if (tempList[i].isFile()) {
-                //System.out.println("ÎÄ     ¼þ£º"+tempList[i]);
+                //System.out.println("ï¿½ï¿½     ï¿½ï¿½ï¿½ï¿½"+tempList[i]);
                 File s = tempList[i];
                 if(s.getName().indexOf("com.baonahao.parents")!=-1){
                     return s.getName();
@@ -128,9 +128,9 @@ public class ApkController {
             aixiao.uproduct.UProperties.config = new HashMap<String, String>();
             Properties prop = new Properties();
             try{
-                //¶ÁÈ¡ÊôÐÔÎÄ¼þa.properties
+                //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½a.properties
                 InputStreamReader in = new InputStreamReader(inputStream);
-                prop.load(in);     ///¼ÓÔØÊôÐÔÁÐ±í
+                prop.load(in);     ///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
                 Iterator<String> it=prop.stringPropertyNames().iterator();
                 while(it.hasNext()){
                     String key = it.next();

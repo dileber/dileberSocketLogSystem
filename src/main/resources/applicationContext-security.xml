@@ -1,0 +1,136 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+    <http pattern="/resources/**" security="none" />
+    <http pattern="/**.png" security="none"/>
+    <http pattern="/**.jpg" security="none"/>
+    <http pattern="/**.gif" security="none"/>
+    <http pattern="/**.css" security="none"/>
+    <http pattern="/**.js" security="none"/>
+    <http pattern="/**.ico" security="none"/>
+
+    <!--安全配置 注释2017-11-12-->
+
+    <!--&lt;!&ndash; enable use-expressions &ndash;&gt;-->
+    <!--<http auto-config="true" use-expressions="true" entry-point-ref="MyAuthenticationEntryPoint">-->
+
+
+        <!--<intercept-url pattern="/" access="permitAll"></intercept-url>-->
+        <!--<intercept-url pattern="/api/user/**/spring_register" access="permitAll"></intercept-url>-->
+        <!--<intercept-url pattern="/api/user/**/user_check" access="permitAll"></intercept-url>-->
+
+        <!--<intercept-url pattern="/api/shop/**/addshop" access="hasRole('ROLE_USER')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/shop/**/cleanshop" access="hasRole('ROLE_USER')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/shop/**/getshop" access="hasRole('ROLE_USER')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/order/**/getuserorders" access="hasRole('ROLE_USER')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/order/**/getorder" access="hasRole('ROLE_USER')"></intercept-url>-->
+
+        <!--<intercept-url pattern="/api/shop/**/getshopbyuser" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/shop/**/cleanshopbyuser" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+
+        <!--<intercept-url pattern="/api/user/**/getUser" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/user/**/getUserByOrder" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/mono/**/add_mono" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/mono/**/delete_mono" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/mono/**/addmonoimage" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/mono/**/editmono" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+        <!--<intercept-url pattern="/api/mono/**/getMono" access="hasRole('ROLE_ADMIN')"></intercept-url>-->
+
+        <!--<intercept-url pattern="/page/**" access="hasRole('ROLE_USER')" />-->
+
+        <!--<intercept-url pattern="/order" access="hasRole('ROLE_USER')" />-->
+
+        <!--<intercept-url pattern="/api/user/**" access="hasRole('ROLE_USER')" />-->
+        <!--<intercept-url pattern="/api/order/**" access="hasRole('ROLE_ADMIN')" />-->
+
+        <!--<logout logout-url="/j_spring_security_logout" logout-success-url="/"/>-->
+
+        <!--<form-login login-page="/temp_login" default-target-url="/welcome"-->
+                     <!--authentication-failure-url="/login?error" username-parameter="username"-->
+                     <!--password-parameter="password" />-->
+
+        <!--<custom-filter ref="loginFilter" after="FORM_LOGIN_FILTER"/>-->
+
+        <!--<custom-filter ref="ajaxLoginFilter" before="FORM_LOGIN_FILTER"/>-->
+
+        <!--&lt;!&ndash;csrf禁用&ndash;&gt;-->
+        <!--<csrf disabled="true" />-->
+        <!--&lt;!&ndash;<csrf request-matcher-ref="csrfSecurityRequestMatcher"/>&ndash;&gt;-->
+
+    <!--</http>-->
+
+    <!--<beans:bean id="csrfSecurityRequestMatcher" class="com.mianbaopailib.servlet.springsecurity.CsrfSecurityRequestMatcher">-->
+       <!--<beans:property name="execludeUrls">-->
+            <!--<beans:list>-->
+                <!--<beans:value>/api/user/v1/up_user_image</beans:value>-->
+                <!--<beans:value>/api/login</beans:value>-->
+            <!--</beans:list>-->
+        <!--</beans:property>-->
+    <!--</beans:bean>-->
+
+    <!--<beans:bean id="MyAuthenticationEntryPoint" class="com.drcosu.mianbaopai.sencurity.XHMyAuthenticationEntryPoint">-->
+        <!--<beans:constructor-arg name="loginFormUrl" value="/" />-->
+    <!--</beans:bean>-->
+
+    <!--&lt;!&ndash; 验证ajax请求,配置 开始&ndash;&gt;-->
+    <!--<beans:bean id="ajaxLoginFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">-->
+        <!--<beans:property name="authenticationManager" ref="authenticationManager"/>-->
+        <!--<beans:property name="authenticationFailureHandler" ref="ajaxFailureHandler"/>-->
+        <!--<beans:property name="authenticationSuccessHandler" ref="ajaxSuccessHandler"/>-->
+        <!--<beans:property name="filterProcessesUrl" value="/api/login"/>-->
+        <!--<beans:property name="passwordParameter" value="passWord"/>-->
+        <!--<beans:property name="usernameParameter" value="userName"/>-->
+    <!--</beans:bean>-->
+
+    <!--<beans:bean id="ajaxFailureHandler" class="com.mianbaopailib.servlet.springsecurity.AjaxAuthenticationFailureHandler">-->
+    <!--</beans:bean>-->
+
+    <!--<beans:bean id="ajaxSuccessHandler" class="com.drcosu.mianbaopai.sencurity.XHAjaxAuthenticationSuccessHandler">-->
+    <!--</beans:bean>-->
+    <!--&lt;!&ndash; 验证ajax请求,配置 结束&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;普通请求，配置开始 &ndash;&gt;-->
+    <!--<beans:bean id="loginFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">-->
+        <!--<beans:property name="authenticationManager" ref="authenticationManager"/>-->
+        <!--<beans:property name="authenticationFailureHandler" ref="failureHandler"/>-->
+        <!--<beans:property name="authenticationSuccessHandler" ref="successHandler"/>-->
+        <!--<beans:property name="filterProcessesUrl" value="/account/login"/>-->
+        <!--<beans:property name="passwordParameter" value="passWord"/>-->
+        <!--<beans:property name="usernameParameter" value="userName"/>-->
+    <!--</beans:bean>-->
+
+    <!--<beans:bean id="failureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">-->
+        <!--<beans:property name="defaultFailureUrl" value="/err/403" />-->
+    <!--</beans:bean>-->
+
+    <!--<beans:bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">-->
+        <!--<beans:property name="alwaysUseDefaultTargetUrl" value="false"/>-->
+        <!--<beans:property name="defaultTargetUrl" value="/"/>-->
+    <!--</beans:bean>-->
+    <!--&lt;!&ndash;普通请求，配置结束 &ndash;&gt;-->
+
+
+
+    <!--&lt;!&ndash; Select users and user_roles from database &ndash;&gt;-->
+    <!--<authentication-manager  alias="authenticationManager">-->
+        <!--<authentication-provider ref='commonAuthenticationProvider'/>-->
+        <!--&lt;!&ndash;        <authentication-provider>-->
+            <!--<jdbc-user-service-->
+                <!--data-source-ref="dataSource"-->
+                <!--users-by-username-query=-->
+                <!--"select username,password, enabled from users where username=?"-->
+                <!--authorities-by-username-query=-->
+                <!--"select username, role from user_roles where username =?  " />-->
+        <!--</authentication-provider>&ndash;&gt;-->
+    <!--</authentication-manager>-->
+    <!--<beans:bean id="commonAuthenticationProvider" class="com.drcosu.mianbaopai.interceptor.CommonAuth" >-->
+    <!--</beans:bean>-->
+
+    <!--<global-method-security secured-annotations="enabled" />-->
+</beans:beans>

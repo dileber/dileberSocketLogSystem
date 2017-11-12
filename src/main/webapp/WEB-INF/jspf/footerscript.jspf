@@ -1,0 +1,23 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: shidawei
+  Date: 2017/6/7
+  Time: 下午8:41
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!--==== plugins js ====-->
+<script src="${context}/resources/js/plugins.js"></script>
+<!--==== magnific-popup-options js ====-->
+<script src="${context}/resources/js/magnific-popup-options.js"></script>
+<!--==== validator js ====-->
+<script src="${context}/resources/js/validator.min.js"></script>
+<!--==== particles js ====-->
+<script src="${context}/resources/js/particles.min.js"></script>
+<!--==== app js ====-->
+<script src="${context}/resources/js/app.js"></script>
+<!--==== app js ====-->
+<script src="${context}/resources/js/wow-1.3.0.min.js"></script>
+<!--==== main js ====-->
+<script src="${context}/resources/js/main.js"></script>

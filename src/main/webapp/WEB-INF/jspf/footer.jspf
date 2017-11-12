@@ -1,0 +1,62 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: shidawei
+  Date: 15/11/1
+  Time: 下午5:33
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page pageEncoding="UTF-8" %>
+
+<!--======**************** SERVICES SECTION ******************=======-->
+<section id="guanyu" class="services-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="quotes-content text-center">
+          <h3>关于</h3>
+          <h4><a href="http://shop.dreamsoso.com" target="_blank">我的购物网站(欢迎参观，购买) shop.dreamsoso.com</a></h4>
+          <h4><a href="http://dileber.dreamsoso.com" target="_blank">面包派工作室 dileber.dreamsoso.com</a></h4>
+          <h4><a href="http://dreamsoso.xyz" target="_blank">面包派工作室(日本语) dreamsoso.xyz</a></h4>
+          <h4><a href="https://github.com/dileber" target="_blank">github.com/dileber</a></h4>
+          <a class="scroll-btn btn theme-color" href="http://shop.dreamsoso.com" target="_blank">点这里，去买买买，全是日本货</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--======*************** END SERVICES SECTION ****************=======-->
+
+
+<!--QUOTES AREA-->
+<div id="contact" class="quotes-area section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title">
+          <h2>联系我</h2>
+          <h3>QQ: 297165331</h3>
+          <h3>工作邮箱: shidawei@xiaohe.com</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END QUOTES AREA-->
+
+
+<!--======******************* FOOTER SECTION ******************======-->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        <div class="footer-text wow fadeInUp" data-wow-delay="0.4s">
+          <p>Copyright &copy; 2017.Company name All rights reserved.
+            <a target="_blank" href="http://dileber.dreamsoso.com/">面包派工作室</a></p>
+          &
+            <a target="_blank" href="http://www.xiaohe.com/">小禾科技</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--======******************* END FOOTER SECTION ***************======-->
